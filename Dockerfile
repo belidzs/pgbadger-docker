@@ -16,7 +16,7 @@ FROM alpine:3
 ARG PGBADGER_VERSION
 
 COPY --from=build /tmp/pgbadger-${PGBADGER_VERSION} /opt/pgbadger
-RUN apk update && apk add perl
+RUN apk update && apk add perl openssh-client
 RUN ln -s "/opt/pgbadger/pgbadger" /usr/local/bin/pgbadger
 
 CMD ["/opt/pgbadger/pgbadger", "--version"]
